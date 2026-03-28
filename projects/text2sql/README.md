@@ -64,3 +64,19 @@ Validation queries were implemented to ensure:
 - No orphan or invalid records
 - No negative transaction values
 - Logical consistency in reporting queries
+
+# 🗂 Project Structure
+text2sql/
+├── schema/
+│   ├── schema.sql
+├── data/
+│   ├── sample-data.sql(myfile used)
+│   └── generator.py
+├── queries/
+├── validation/
+|   ├── validation_checks.sql
+├── docs/
+│   ├── ERD.png
+│   ├── explanations.md
+│   └── query_explanations.md
+└── README.md

@@ -105,7 +105,6 @@ WITH customer_monthly_spend AS (
     JOIN order_items oi ON o.order_id = oi.order_id
     WHERE o.status = 'completed'
     GROUP BY o.customer_id,c.name, month
-    ORDER BY o.customer_id
 ),
 spend_with_lag AS (
     SELECT
