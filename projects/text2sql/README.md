@@ -9,7 +9,6 @@ It simulates a real-world analytics workflow where business questions are conver
 
 ## Key Features
 - End-to-end SQL analytics workflow
-- 25+ business-driven SQL queries
 - Advanced SQL (CTEs, window functions, LAG, aggregations)
 - Data validation and cross-checking layer
 - Programmatic data generation using Python
