@@ -44,3 +44,13 @@ Data was programmatically generated to ensure:
 - Variety in order statuses for filtering scenarios
 
 This approach improves realism compared to static sample data.
+
+## Validation Strategy
+
+Validation queries were created to cross-check:
+
+- Aggregated results vs base data
+- Counts across different grouping levels
+- Data integrity constraints
+
+This ensures SQL outputs are reliable and accurate.

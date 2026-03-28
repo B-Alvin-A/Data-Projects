@@ -55,3 +55,12 @@ The generator introduces:
 - Different order statuses (completed, pending, cancelled)
 
 This enables realistic analytical querying and testing.
+
+## Data Validation
+
+Validation queries were implemented to ensure:
+
+- Revenue consistency across aggregations
+- No orphan or invalid records
+- No negative transaction values
+- Logical consistency in reporting queries
