@@ -1,5 +1,8 @@
 projectLog.txt
 
+/projects/data-warehouse/data/raw 
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
