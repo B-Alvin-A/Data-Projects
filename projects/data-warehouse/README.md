@@ -30,5 +30,42 @@ The project follows a 3-layer architecture:
 * SQL
 
 ## Project Structure
+data-warehouse-project/
+│
+├── data/
+│   └── raw/                  # CSV files
+│
+├── sql/
+│   ├── 01_raw/
+│   ├── 02_staging/
+│   ├── 03_warehouse/
+│   ├── 04_analytics/
+│   └── 05_quality_checks/
+│
+├── diagrams/
+│   └── star_schema.png
+│
+├── README.md
 
-(To be updated as the project progresses)
+## Progress Log
+
+### Step 1 — Project Setup
+
+* Selected domain: E-commerce
+* Selected dataset: Olist Kaggle dataset
+* Defined project objectives and architecture
+
+### Step 2 — Raw Layer Design
+
+* Identified required source tables from dataset
+* Designed raw layer schema using a schema-on-read approach
+* All fields stored as TEXT to preserve source integrity
+* Added ingestion timestamp (ingested_at) for auditability
+* No constraints applied to allow raw data flexibility
+
+### Step 3 — Data Ingestion (Raw Layer)
+
+* Loaded CSV data into PostgreSQL raw tables using COPY command
+* Configured Docker volume mapping for file accessibility
+* Successfully ingested transactional, customer, product, and payment data
+* Performed initial row count validation to confirm successful load
