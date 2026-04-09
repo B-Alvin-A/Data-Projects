@@ -69,3 +69,51 @@ data-warehouse-project/
 * Configured Docker volume mapping for file accessibility
 * Successfully ingested transactional, customer, product, and payment data
 * Performed initial row count validation to confirm successful load
+
+### Step 4 — Staging Layer (Orders)
+
+* Created staging table for orders (stg_orders)
+* Applied data type casting for timestamp fields
+* Implemented deduplication using ROW_NUMBER()
+* Filtered out records with null primary identifiers
+* Prepared clean and structured data for downstream modeling
+
+### Step 5 — Staging Layer (Order Items)
+
+* Created staging table for order items (stg_order_items)
+* Defined composite key (order_id, order_item_id) for deduplication
+* Converted price and freight_value to NUMERIC for financial accuracy
+* Standardized shipping timestamp field
+* Validated uniqueness and data integrity constraints
+
+### Step 6 — Staging Layer (Customers)
+
+* Created staging table for customers (stg_customers)
+* Preserved both transactional (customer_id) and persistent (customer_unique_id) identifiers
+* Implemented deduplication using customer_id
+* Retained geographic fields without transformation for downstream modeling
+* Identified customer uniqueness logic for future dimension table design
+
+### Data Observation — Customer Identity Structure
+
+* Identified that customer_unique_id represents the true customer entity
+* Observed multiple customer_id values mapping to a single customer_unique_id
+* Confirms that the dataset captures repeat purchases across different orders
+* customer_id is treated as a transactional identifier, while customer_unique_id is used for dimensional modeling
+
+### Step 7 — Staging Layer (Products)
+
+* Created staging table for products (stg_products)
+* Selected only analytically relevant fields to reduce noise
+* Converted product dimensions and weight to numeric types
+* Implemented deduplication using product_id
+* Handled missing product categories by assigning 'unknown'
+* Ensured data consistency for downstream dimensional modeling
+
+### Step 8 — Staging Layer (Payments)
+
+* Created staging table for payments (stg_payments)
+* Preserved multiple payment records per order
+* Applied composite deduplication using (order_id, payment_sequential)
+* Converted payment fields to appropriate numeric types
+* Prepared data for financial reconciliation and fact table integration
