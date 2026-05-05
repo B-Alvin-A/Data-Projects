@@ -117,3 +117,34 @@ data-warehouse-project/
 * Applied composite deduplication using (order_id, payment_sequential)
 * Converted payment fields to appropriate numeric types
 * Prepared data for financial reconciliation and fact table integration
+
+### Step 9 — Warehouse Layer (Customer Dimension)
+
+* Built dim_customer from staged customer data
+* Used customer_unique_id as the business key
+* Generated surrogate key (customer_sk) for warehouse joins
+* Preserved customer geography attributes
+* Prepared the model for future slowly changing dimension support
+
+### Data Modeling Consideration — Customer Location Changes
+
+* Detected that some customers appear with multiple city/state values across records
+* Indicates real-world behavior such as customer relocation or inconsistent data capture
+* Implemented a Type 1 Slowly Changing Dimension (SCD) approach by selecting a single record per customer
+* Acknowledged that a Type 2 SCD approach could be implemented in future iterations to track historical changes
+
+### Step 10 — Warehouse Layer (Product Dimension)
+
+* Built dim_product from staged product data
+* Generated surrogate key (product_sk) for warehouse joins
+* Retained product category and physical attributes
+* Ensured no duplicate product records
+* Standardized category values for consistent analytics
+
+### Step 11 — Warehouse Layer (Date Dimension)
+
+* Generated dim_date using PostgreSQL generate_series()
+* Derived date range dynamically from order data
+* Created time-based attributes (year, month, quarter, day)
+* Added day and month names for enhanced analytics
+* Enabled time-series analysis capabilities in the warehouse
